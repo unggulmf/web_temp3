@@ -1,705 +1,1809 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jasa Pembuatan Website Profesional</title>
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-    <script>tailwind.config={theme:{extend:{colors:{primary:'#007BFF',secondary:'#0056D2'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#007BFF", secondary: "#0056D2" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
     <style>
-        :where([class^="ri-"])::before { content: "\f3c2"; }
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
+      :where([class^="ri-"])::before {
+        content: "\f3c2";
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        scroll-behavior: smooth;
+      }
+      .nav-link {
+        position: relative;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: #007bff;
+        transition: width 0.3s ease;
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+      .portfolio-item:hover .portfolio-overlay {
+        opacity: 1;
+      }
+      .testimonial-card {
+        transition: transform 0.3s ease;
+      }
+      .testimonial-card:hover {
+        transform: translateY(-5px);
+      }
+      input:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+      }
+      .btn-primary {
+        transition: all 0.3s ease;
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+      }
+      .section-fade {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .section-fade.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      /* Global Reset (optional, simplify if needed) */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --primary: #1d4ed8; /* ganti sesuai warna Tailwind kamu */
+        --secondary: #2563eb;
+        --text-gray: #374151;
+      }
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: white;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        z-index: 50;
+      }
+
+      .container {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      .nav-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 4rem;
+      }
+
+      .logo {
+        font-family: "Pacifico", cursive;
+        font-size: 1.5rem;
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-link {
+        color: var(--text-gray);
+        text-decoration: none;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: var(--primary);
+      }
+
+      .btn-primary {
+        /* margin-left: 1rem; */
+        padding: 0.5rem 1.25rem;
+        background-color: var(--primary);
+        color: white;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--secondary);
+      }
+
+      .mobile-button {
+        display: flex;
+      }
+
+      .menu-icon {
+        width: 2rem;
+        height: 2rem;
+        background: none;
+        border: none;
+        color: var(--text-gray);
+        cursor: pointer;
+      }
+
+      /* Mobile Menu */
+      .mobile-menu {
+        display: none;
+        flex-direction: column;
+        padding: 1rem;
+        background: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        position: absolute;
+        width: 100%;
+      }
+
+      .mobile-link {
+        display: block;
+        padding: 0.5rem 1rem;
+        color: var(--text-gray);
+        text-decoration: none;
+        border-radius: 0.375rem;
+        transition: all 0.3s ease;
+      }
+
+      .mobile-link:hover {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .mobile-contact {
+        margin-top: 1rem;
+      }
+
+      /* Responsive */
+      @media (min-width: 768px) {
+        .nav-links {
+          display: flex;
+          align-items: center;
         }
-        .nav-link {
-            position: relative;
+        .mobile-button {
+          display: none;
         }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: #007BFF;
-            transition: width 0.3s ease;
+        .mobile-menu {
+          display: none !important;
         }
-        .nav-link:hover::after {
-            width: 100%;
+      }
+      /* Hero Section */
+      .hero-section {
+        padding: 6rem 1rem 4rem;
+      }
+
+      @media (min-width: 768px) {
+        .hero-section {
+          padding: 8rem 1rem 6rem;
         }
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
+      }
+
+      .hero-container {
+        max-width: 1120px;
+        margin: 0 auto;
+      }
+
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      @media (min-width: 768px) {
+        .hero-content {
+          flex-direction: row;
+          align-items: flex-start;
         }
-        .testimonial-card {
-            transition: transform 0.3s ease;
+      }
+
+      .hero-text {
+        width: 100%;
+        margin-bottom: 2.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .hero-text {
+          width: 50%;
+          margin-bottom: 0;
+          padding-right: 2rem;
         }
-        .testimonial-card:hover {
-            transform: translateY(-5px);
+      }
+
+      .hero-title {
+        font-size: 1.875rem;
+        font-weight: 700;
+        color: #1f2937; /* gray-800 */
+        line-height: 1.3;
+        margin-bottom: 1rem;
+      }
+
+      @media (min-width: 768px) {
+        .hero-title {
+          font-size: 2.25rem;
         }
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #007BFF;
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+      }
+
+      @media (min-width: 1024px) {
+        .hero-title {
+          font-size: 3rem;
         }
-        .btn-primary {
-            transition: all 0.3s ease;
+      }
+
+      .hero-subtitle {
+        font-size: 1.125rem;
+        color: #4b5563; /* gray-600 */
+        margin-bottom: 2rem;
+      }
+
+      .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      @media (min-width: 640px) {
+        .hero-buttons {
+          flex-direction: row;
         }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+      }
+
+      .btn-primary {
+        padding: 0.75rem 1.5rem;
+        background-color: #1d4ed8; /* primary */
+        color: white;
+        text-align: center;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background-color: #2563eb; /* secondary */
+      }
+
+      .btn-outline {
+        padding: 0.75rem 1.5rem;
+        border: 2px solid #1d4ed8;
+        color: #1d4ed8;
+        text-align: center;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-outline:hover {
+        background-color: #f9fafb; /* gray-50 */
+      }
+
+      .hero-image {
+        width: 100%;
+      }
+
+      @media (min-width: 768px) {
+        .hero-image {
+          width: 50%;
         }
-        .section-fade {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .mockup-image {
+        width: 100%;
+        height: auto;
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+      .about-section {
+        padding: 4rem 1rem;
+        background-color: #f9fafb; /* gray-50 */
+      }
+
+      .about-container {
+        max-width: 1120px;
+        margin: 0 auto;
+      }
+
+      .about-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .about-title {
+        font-size: 1.875rem;
+        font-weight: 700;
+        color: #1f2937; /* gray-800 */
+        margin-bottom: 1rem;
+      }
+
+      .about-subtitle {
+        color: #4b5563; /* gray-600 */
+        max-width: 640px;
+        margin: 0 auto;
+      }
+
+      .about-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      @media (min-width: 768px) {
+        .about-content {
+          flex-direction: row;
+          align-items: flex-start;
         }
-        .section-fade.visible {
-            opacity: 1;
-            transform: translateY(0);
+      }
+
+      .about-text {
+        width: 100%;
+      }
+
+      @media (min-width: 768px) {
+        .about-text {
+          width: 50%;
+          padding-right: 2rem;
         }
+      }
+
+      .about-heading {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 1rem;
+      }
+
+      .about-paragraph {
+        color: #4b5563;
+        margin-bottom: 1.5rem;
+      }
+
+      .about-point {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #1d4ed8; /* primary */
+        margin-top: 0.5rem;
+      }
+
+      .about-image {
+        width: 100%;
+      }
+
+      @media (min-width: 768px) {
+        .about-image {
+          width: 50%;
+        }
+      }
+
+      .team-image {
+        width: 100%;
+        height: auto;
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+      .services-section {
+        padding: 4rem 1rem;
+      }
+
+      .services-container {
+        max-width: 1120px;
+        margin: 0 auto;
+      }
+
+      .services-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .services-title {
+        font-size: 1.875rem;
+        font-weight: 700;
+        color: #1f2937; /* gray-800 */
+        margin-bottom: 1rem;
+      }
+
+      .services-subtitle {
+        color: #4b5563; /* gray-600 */
+        max-width: 640px;
+        margin: 0 auto;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .services-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .services-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      .service-card {
+        background-color: #ffffff;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        transition: box-shadow 0.3s ease;
+        text-align: center;
+      }
+
+      .service-card:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      }
+
+      .service-icon {
+        width: 4rem;
+        height: 4rem;
+        background-color: #dbeafe; /* blue-100 */
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem auto;
+      }
+
+      .service-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 0.75rem;
+      }
+
+      .service-text {
+        color: #4b5563;
+        font-size: 0.95rem;
+      }
+      /* Portfolio Section */
+      #portfolio {
+        padding: 4rem 1rem;
+        background-color: #f9fafb;
+      }
+
+      #portfolio .container {
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+
+      #portfolio .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      #portfolio .section-title h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #1f2937;
+        margin-bottom: 1rem;
+      }
+
+      #portfolio .section-title p {
+        color: #4b5563;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* Portfolio Grid */
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .portfolio-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .portfolio-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      /* Portfolio Items */
+      .portfolio-item {
+        position: relative;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .portfolio-item img {
+        width: 100%;
+        height: 16rem;
+        object-fit: cover;
+      }
+      .section-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .section-header h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1f2937; /* gray-800 */
+        margin-bottom: 1rem;
+      }
+
+      .section-header p {
+        max-width: 640px;
+        margin: 0 auto;
+        color: #4b5563; /* gray-600 */
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      /* Overlay */
+      .portfolio-overlay {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(59, 130, 246, 0.8); /* blue-500 opacity-80 */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      .portfolio-item:hover .portfolio-overlay {
+        opacity: 1;
+      }
+
+      .portfolio-overlay h3 {
+        color: white;
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .portfolio-overlay p {
+        color: white;
+        text-align: center;
+        padding: 0 1rem;
+        margin-bottom: 1rem;
+      }
+
+      /* Button */
+      .portfolio-overlay a {
+        padding: 0.5rem 1rem;
+        background-color: white;
+        color: #3b82f6;
+        border-radius: 0.5rem;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .portfolio-overlay a:hover {
+        background-color: #f3f4f6;
+      }
+      .testimonial-section {
+        padding: 4rem 1rem;
+      }
+
+      .testimonial-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .testimonial-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .testimonial-header h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #1f2937; /* gray-800 */
+        margin-bottom: 1rem;
+      }
+
+      .testimonial-header p {
+        color: #4b5563; /* gray-600 */
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .testimonial-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .testimonial-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .testimonial-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .testimonial-profile {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .testimonial-avatar {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 9999px;
+        overflow: hidden;
+        margin-right: 1rem;
+      }
+
+      .testimonial-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .testimonial-card h4 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin: 0;
+      }
+
+      .testimonial-role {
+        font-size: 0.875rem;
+        color: #4b5563;
+      }
+
+      .testimonial-text {
+        color: #374151;
+        font-style: italic;
+      }
+
+      .testimonial-stars {
+        color: #fbbf24; /* yellow-400 */
+        margin-top: 1rem;
+        font-size: 1.2rem;
+      }
+      .contact-section {
+        padding: 4rem 1rem;
+        background-color: #f9fafb; /* gray-50 */
+      }
+
+      .contact-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .contact-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .contact-header h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #1f2937; /* gray-800 */
+        margin-bottom: 1rem;
+      }
+
+      .contact-header p {
+        color: #4b5563; /* gray-600 */
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .contact-flex {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+      }
+
+      @media (min-width: 1024px) {
+        .contact-flex {
+          flex-direction: row;
+        }
+      }
+
+      .contact-form-wrapper {
+        flex: 2;
+        background: white;
+        padding: 2rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        flex: 1;
+        background: white;
+        padding: 2rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-form .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-form label {
+        display: block;
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 0.5rem;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 1px solid #d1d5db; /* gray-300 */
+        border-radius: 0.375rem;
+        outline: none;
+      }
+
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        border-color: #2563eb; /* primary */
+      }
+
+      .contact-button {
+        width: 100%;
+        padding: 0.75rem;
+        background-color: #2563eb; /* primary */
+        color: white;
+        font-weight: 500;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .contact-button:hover {
+        background-color: #1d4ed8; /* secondary */
+      }
+
+      .contact-info h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 1.5rem;
+      }
+
+      .info-item {
+        display: flex;
+        flex: 1;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+      }
+
+      .info-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        background-color: #dbeafe; /* blue-100 */
+        color: #2563eb;
+        font-size: 1.25rem;
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        margin-top: 0.25rem;
+      }
+
+      .info-item h4 {
+        font-size: 1.125rem;
+        font-weight: 500;
+        color: #1f2937;
+        margin-bottom: 0.25rem;
+      }
+
+      .info-item p {
+        color: #4b5563;
+        margin: 0;
+      }
+      .footer {
+        background-color: #1f2937; /* gray-800 */
+        color: white;
+        padding: 3rem 1rem;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .footer-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .footer-logo {
+        font-size: 1.75rem;
+        font-family: "Pacifico", cursive;
+        color: white;
+        display: inline-block;
+        margin-bottom: 1rem;
+        text-decoration: none;
+      }
+
+      .footer-description {
+        color: #d1d5db; /* gray-300 */
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+      }
+
+      .footer-socials {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        background-color: #374151; /* gray-700 */
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+      .social-icon:hover {
+        background-color: #2563eb; /* primary */
+      }
+
+      .footer-heading {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.75rem;
+      }
+
+      .footer-links a {
+        color: #d1d5db; /* gray-300 */
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: white;
+      }
+
+      .newsletter-form {
+        display: flex;
+        margin-top: 1rem;
+      }
+
+      .newsletter-form input {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.375rem 0 0 0.375rem;
+        flex-grow: 1;
+        color: #1f2937;
+        outline: none;
+      }
+
+      .newsletter-form button {
+        padding: 0.5rem 1rem;
+        background-color: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 0 0.375rem 0.375rem 0;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .newsletter-form button:hover {
+        background-color: #1d4ed8;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #374151; /* gray-700 */
+        margin-top: 2.5rem;
+        padding-top: 1.5rem;
+        text-align: center;
+        color: #9ca3af; /* gray-400 */
+        font-size: 0.875rem;
+      }
+      /* Mobile CTA Button */
+      .mobile-cta {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+        z-index: 40;
+      }
+
+      .cta-button {
+        width: 56px;
+        height: 56px;
+        background-color: #2563eb; /* primary */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s;
+        font-size: 24px;
+      }
+
+      .cta-button:hover {
+        background-color: #1d4ed8; /* secondary */
+      }
+
+      /* Hide on medium and above */
+      @media (min-width: 768px) {
+        .mobile-cta {
+          display: none;
+        }
+      }
+
+      /* Modal Styles */
+      .modal {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 50;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      .modal-content {
+        background-color: white;
+        border-radius: 0.5rem;
+        padding: 2rem;
+        max-width: 400px;
+        width: 100%;
+        position: relative;
+        z-index: 10;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        color: #6b7280; /* gray-500 */
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1.25rem;
+      }
+
+      .modal-close:hover {
+        color: #374151; /* gray-700 */
+      }
+
+      .modal-body {
+        text-align: center;
+      }
+
+      .modal-icon {
+        width: 64px;
+        height: 64px;
+        background-color: #d1fae5; /* green-100 */
+        color: #10b981; /* green-500 */
+        font-size: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+      }
+
+      .modal-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1f2937; /* gray-800 */
+        margin-bottom: 0.5rem;
+      }
+
+      .modal-message {
+        color: #6b7280; /* gray-600 */
+        margin-bottom: 1.5rem;
+      }
+
+      .modal-button {
+        padding: 0.5rem 1.5rem;
+        background-color: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 9999px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .modal-button:hover {
+        background-color: #1d4ed8;
+      }
     </style>
-</head>
-<body class="bg-white">
+  </head>
+  <body class="bg-white">
     <!-- Navigation Bar -->
-    <nav class="fixed top-0 w-full bg-white shadow-sm z-50">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <a href="#" class="text-2xl font-['Pacifico'] text-primary">logo</a>
-                </div>
-                
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="nav-link text-gray-700 hover:text-primary transition-colors">Home</a>
-                    <a href="#about" class="nav-link text-gray-700 hover:text-primary transition-colors">About</a>
-                    <a href="#services" class="nav-link text-gray-700 hover:text-primary transition-colors">Services</a>
-                    <a href="#portfolio" class="nav-link text-gray-700 hover:text-primary transition-colors">Portfolio</a>
-                    <a href="#testimonials" class="nav-link text-gray-700 hover:text-primary transition-colors">Testimonials</a>
-                    <a href="#contact" class="ml-4 px-5 py-2 bg-primary text-white !rounded-button hover:bg-secondary transition-colors cursor-pointer">Hubungi Kami</a>
-                </div>
-                
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="w-8 h-8 flex items-center justify-center text-gray-700">
-                        <i class="ri-menu-line ri-lg"></i>
-                    </button>
-                </div>
-            </div>
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-inner">
+          <div class="logo-wrap">
+            <a href="#" class="logo">Webib</a>
+          </div>
+
+          <div class="nav-links">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#portfolio" class="nav-link">Portfolio</a>
+            <a href="#testimonials" class="nav-link">Testimonials</a>
+            <a href="#contact" class="btn-primary">Hubungi Kami</a>
+          </div>
+
+          <div class="mobile-button">
+            <button id="mobile-menu-button" class="menu-icon">
+              <i class="ri-menu-line ri-lg"></i>
+            </button>
+          </div>
         </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#home" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">Home</a>
-                <a href="#about" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">About</a>
-                <a href="#services" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">Services</a>
-                <a href="#portfolio" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">Portfolio</a>
-                <a href="#testimonials" class="block px-3 py-2 text-gray-700 hover:bg-primary hover:text-white rounded-md">Testimonials</a>
-                <a href="#contact" class="block px-3 py-2 bg-primary text-white !rounded-button hover:bg-secondary transition-colors mt-3">Hubungi Kami</a>
-            </div>
-        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="mobile-menu">
+        <a href="#home" class="mobile-link">Home</a>
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#services" class="mobile-link">Services</a>
+        <a href="#portfolio" class="mobile-link">Portfolio</a>
+        <a href="#testimonials" class="mobile-link">Testimonials</a>
+        <a href="#contact" class="btn-primary mobile-contact">Hubungi Kami</a>
+      </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 px-4">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="w-full md:w-1/2 mb-10 md:mb-0">
-                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 leading-tight mb-4">
-                        Jasa Pembuatan Website Profesional untuk UMKM & Startup
-                    </h1>
-                    <p class="text-lg text-gray-600 mb-8">
-                        Tingkatkan bisnis Anda dengan website modern yang responsif, cepat, dan SEO-friendly. Kami membantu Anda membangun kehadiran online yang efektif dan profesional.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#contact" class="px-6 py-3 bg-primary text-white font-medium !rounded-button hover:bg-secondary transition-colors text-center cursor-pointer btn-primary">
-                            Konsultasi Gratis
-                        </a>
-                        <a href="#about" class="px-6 py-3 border-2 border-primary text-primary font-medium !rounded-button hover:bg-gray-50 transition-colors text-center cursor-pointer">
-                            Pelajari Lebih Lanjut
-                        </a>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2">
-                    <img src="https://readdy.ai/api/search-image?query=modern%20website%20design%20mockup%2C%20professional%20website%20on%20laptop%20and%20mobile%20devices%2C%20clean%20UI%20design%2C%20blue%20color%20scheme%2C%203D%20illustration%2C%20high%20quality%20render%2C%20white%20background%2C%20professional%20look&width=600&height=500&seq=1&orientation=landscape" alt="Website Mockup" class="w-full h-auto rounded-lg shadow-xl">
-                </div>
+    <section id="home" class="hero-section">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1 class="hero-title">
+              Jasa Pembuatan Website Profesional untuk UMKM & Startup
+            </h1>
+            <p class="hero-subtitle">
+              Tingkatkan bisnis Anda dengan website modern yang responsif,
+              cepat, dan SEO-friendly. Kami membantu Anda membangun kehadiran
+              online yang efektif dan profesional.
+            </p>
+            <div class="hero-buttons">
+              <a href="#contact" class="btn-primary">Konsultasi Gratis</a>
+              <a href="#about" class="btn-outline">Pelajari Lebih Lanjut</a>
             </div>
+          </div>
+          <div class="hero-image">
+            <img
+              src="https://readdy.ai/api/search-image?query=modern%20website%20design%20mockup%2C%20professional%20website%20on%20laptop%20and%20mobile%20devices%2C%20clean%20UI%20design%2C%20blue%20color%20scheme%2C%203D%20illustration%2C%20high%20quality%20render%2C%20white%20background%2C%20professional%20look&width=600&height=500&seq=1&orientation=landscape"
+              alt="Website Mockup"
+              class="mockup-image"
+            />
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-16 px-4 bg-gray-50">
-        <div class="max-w-7xl mx-auto section-fade">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Tentang Layanan Kami</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    Kami adalah tim pengembang web profesional yang berdedikasi untuk membantu bisnis Anda tumbuh melalui solusi digital yang inovatif dan efektif.
-                </p>
-            </div>
-            
-            <div class="flex flex-col md:flex-row items-center gap-8">
-                <div class="w-full md:w-1/2">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Solusi Website Terbaik untuk Bisnis Anda</h3>
-                    <p class="text-gray-600 mb-6">
-                        Dengan pengalaman lebih dari 5 tahun dalam industri pengembangan web, kami telah membantu ratusan UMKM dan startup untuk membangun kehadiran online yang kuat dan menghasilkan.
-                    </p>
-                    <p class="text-gray-600 mb-6">
-                        Setiap proyek kami kerjakan dengan pendekatan yang personal dan disesuaikan dengan kebutuhan spesifik bisnis Anda. Kami tidak hanya membangun website, tapi juga membantu Anda mencapai tujuan bisnis Anda.
-                    </p>
-                    <div class="flex items-center gap-2 text-primary">
-                        <i class="ri-check-line ri-lg"></i>
-                        <span>Desain yang modern dan profesional</span>
-                    </div>
-                    <div class="flex items-center gap-2 text-primary mt-2">
-                        <i class="ri-check-line ri-lg"></i>
-                        <span>Responsif di semua perangkat</span>
-                    </div>
-                    <div class="flex items-center gap-2 text-primary mt-2">
-                        <i class="ri-check-line ri-lg"></i>
-                        <span>Optimasi SEO untuk peringkat yang lebih baik</span>
-                    </div>
-                    <div class="flex items-center gap-2 text-primary mt-2">
-                        <i class="ri-check-line ri-lg"></i>
-                        <span>Performa cepat dan keamanan terjamin</span>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2">
-                    <img src="https://readdy.ai/api/search-image?query=web%20development%20team%20working%20together%2C%20professional%20office%20environment%2C%20diverse%20team%2C%20collaborative%20workspace%2C%20modern%20office%20with%20computers%2C%20blue%20accents%2C%20high%20quality%20photography&width=600&height=400&seq=2&orientation=landscape" alt="Our Team" class="w-full h-auto rounded-lg shadow-lg">
-                </div>
-            </div>
+    <section id="about" class="about-section">
+      <div class="about-container">
+        <div class="about-header">
+          <h2 class="about-title">Tentang Layanan Kami</h2>
+          <p class="about-subtitle">
+            Kami adalah tim pengembang web profesional yang berdedikasi untuk
+            membantu bisnis Anda tumbuh melalui solusi digital yang inovatif dan
+            efektif.
+          </p>
         </div>
+
+        <div class="about-content">
+          <div class="about-text">
+            <h3 class="about-heading">
+              Solusi Website Terbaik untuk Bisnis Anda
+            </h3>
+            <p class="about-paragraph">
+              Dengan pengalaman lebih dari 5 tahun dalam industri pengembangan
+              web, kami telah membantu ratusan UMKM dan startup untuk membangun
+              kehadiran online yang kuat dan menghasilkan.
+            </p>
+            <p class="about-paragraph">
+              Setiap proyek kami kerjakan dengan pendekatan yang personal dan
+              disesuaikan dengan kebutuhan spesifik bisnis Anda. Kami tidak
+              hanya membangun website, tapi juga membantu Anda mencapai tujuan
+              bisnis Anda.
+            </p>
+            <div class="about-point">
+              <i class="ri-check-line ri-lg"></i
+              ><span>Desain yang modern dan profesional</span>
+            </div>
+            <div class="about-point">
+              <i class="ri-check-line ri-lg"></i
+              ><span>Responsif di semua perangkat</span>
+            </div>
+            <div class="about-point">
+              <i class="ri-check-line ri-lg"></i
+              ><span>Optimasi SEO untuk peringkat yang lebih baik</span>
+            </div>
+            <div class="about-point">
+              <i class="ri-check-line ri-lg"></i
+              ><span>Performa cepat dan keamanan terjamin</span>
+            </div>
+          </div>
+
+          <div class="about-image">
+            <img
+              src="https://readdy.ai/api/search-image?query=web%20development%20team%20working%20together%2C%20professional%20office%20environment%2C%20diverse%20team%2C%20collaborative%20workspace%2C%20modern%20office%20with%20computers%2C%20blue%20accents%2C%20high%20quality%20photography&width=600&height=400&seq=2&orientation=landscape"
+              alt="Our Team"
+              class="team-image"
+            />
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-16 px-4">
-        <div class="max-w-7xl mx-auto section-fade">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Mengapa Memilih Kami</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    Kami menawarkan layanan pengembangan web komprehensif yang dirancang untuk memenuhi kebutuhan bisnis Anda.
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Service Card 1 -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
-                        <i class="ri-speed-line ri-xl text-primary"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 text-center mb-3">Fast Delivery</h3>
-                    <p class="text-gray-600 text-center">
-                        Kami berkomitmen untuk menyelesaikan proyek Anda tepat waktu dengan kualitas terbaik. Website Anda siap dalam 7-14 hari kerja.
-                    </p>
-                </div>
-                
-                <!-- Service Card 2 -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
-                        <i class="ri-palette-line ri-xl text-primary"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 text-center mb-3">Custom Design</h3>
-                    <p class="text-gray-600 text-center">
-                        Setiap website yang kami buat memiliki desain unik yang disesuaikan dengan brand dan kebutuhan bisnis Anda.
-                    </p>
-                </div>
-                
-                <!-- Service Card 3 -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
-                        <i class="ri-search-line ri-xl text-primary"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 text-center mb-3">SEO Optimized</h3>
-                    <p class="text-gray-600 text-center">
-                        Website Anda dioptimalkan untuk mesin pencari, membantu bisnis Anda lebih mudah ditemukan oleh calon pelanggan.
-                    </p>
-                </div>
-                
-                <!-- Service Card 4 -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
-                        <i class="ri-smartphone-line ri-xl text-primary"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 text-center mb-3">Mobile Responsive</h3>
-                    <p class="text-gray-600 text-center">
-                        Semua website kami responsif dan tampil sempurna di semua perangkat, dari desktop hingga smartphone.
-                    </p>
-                </div>
-            </div>
+    <section id="services" class="services-section">
+      <div class="services-container">
+        <div class="services-header">
+          <h2 class="services-title">Mengapa Memilih Kami</h2>
+          <p class="services-subtitle">
+            Kami menawarkan layanan pengembangan web komprehensif yang dirancang
+            untuk memenuhi kebutuhan bisnis Anda.
+          </p>
         </div>
+
+        <div class="services-grid">
+          <!-- Card 1 -->
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-speed-line ri-xl text-primary"></i>
+            </div>
+            <h3 class="service-title">Fast Delivery</h3>
+            <p class="service-text">
+              Kami berkomitmen untuk menyelesaikan proyek Anda tepat waktu
+              dengan kualitas terbaik. Website Anda siap dalam 7-14 hari kerja.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-palette-line ri-xl text-primary"></i>
+            </div>
+            <h3 class="service-title">Custom Design</h3>
+            <p class="service-text">
+              Setiap website yang kami buat memiliki desain unik yang
+              disesuaikan dengan brand dan kebutuhan bisnis Anda.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-search-line ri-xl text-primary"></i>
+            </div>
+            <h3 class="service-title">SEO Optimized</h3>
+            <p class="service-text">
+              Website Anda dioptimalkan untuk mesin pencari, membantu bisnis
+              Anda lebih mudah ditemukan oleh calon pelanggan.
+            </p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="ri-smartphone-line ri-xl text-primary"></i>
+            </div>
+            <h3 class="service-title">Mobile Responsive</h3>
+            <p class="service-text">
+              Semua website kami responsif dan tampil sempurna di semua
+              perangkat, dari desktop hingga smartphone.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="py-16 px-4 bg-gray-50">
-        <div class="max-w-7xl mx-auto section-fade">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Portfolio Kami</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    Lihat beberapa proyek terbaik yang telah kami kerjakan untuk klien-klien kami.
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Portfolio Item 1 -->
-                <div class="portfolio-item relative rounded-lg overflow-hidden shadow-md group">
-                    <img src="https://readdy.ai/api/search-image?query=modern%20e-commerce%20website%20design%2C%20clean%20UI%2C%20product%20showcase%2C%20blue%20color%20scheme%2C%20professional%20website%20mockup%20on%20laptop%20screen%2C%20high%20quality&width=600&height=450&seq=3&orientation=landscape" alt="E-commerce Website" class="w-full h-64 object-cover">
-                    <div class="portfolio-overlay absolute inset-0 bg-primary bg-opacity-80 flex flex-col items-center justify-center opacity-0 transition-opacity duration-300">
-                        <h3 class="text-white text-xl font-semibold mb-2">E-commerce Website</h3>
-                        <p class="text-white text-center px-4 mb-4">Online store for a fashion brand with complete payment integration</p>
-                        <a href="#" class="px-4 py-2 bg-white text-primary !rounded-button hover:bg-gray-100 transition-colors cursor-pointer">View Details</a>
-                    </div>
-                </div>
-                
-                <!-- Portfolio Item 2 -->
-                <div class="portfolio-item relative rounded-lg overflow-hidden shadow-md group">
-                    <img src="https://readdy.ai/api/search-image?query=corporate%20business%20website%20design%2C%20professional%20layout%2C%20company%20profile%20page%2C%20blue%20and%20white%20color%20scheme%2C%20clean%20design%2C%20website%20mockup%20on%20desktop%20screen%2C%20high%20quality&width=600&height=450&seq=4&orientation=landscape" alt="Corporate Website" class="w-full h-64 object-cover">
-                    <div class="portfolio-overlay absolute inset-0 bg-primary bg-opacity-80 flex flex-col items-center justify-center opacity-0 transition-opacity duration-300">
-                        <h3 class="text-white text-xl font-semibold mb-2">Corporate Website</h3>
-                        <p class="text-white text-center px-4 mb-4">Professional website for a consulting firm with booking system</p>
-                        <a href="#" class="px-4 py-2 bg-white text-primary !rounded-button hover:bg-gray-100 transition-colors cursor-pointer">View Details</a>
-                    </div>
-                </div>
-                
-                <!-- Portfolio Item 3 -->
-                <div class="portfolio-item relative rounded-lg overflow-hidden shadow-md group">
-                    <img src="https://readdy.ai/api/search-image?query=restaurant%20website%20design%2C%20food%20menu%20showcase%2C%20elegant%20layout%2C%20reservation%20system%2C%20blue%20accents%2C%20website%20mockup%20on%20tablet%2C%20high%20quality&width=600&height=450&seq=5&orientation=landscape" alt="Restaurant Website" class="w-full h-64 object-cover">
-                    <div class="portfolio-overlay absolute inset-0 bg-primary bg-opacity-80 flex flex-col items-center justify-center opacity-0 transition-opacity duration-300">
-                        <h3 class="text-white text-xl font-semibold mb-2">Restaurant Website</h3>
-                        <p class="text-white text-center px-4 mb-4">Elegant website for a fine dining restaurant with online reservation</p>
-                        <a href="#" class="px-4 py-2 bg-white text-primary !rounded-button hover:bg-gray-100 transition-colors cursor-pointer">View Details</a>
-                    </div>
-                </div>
-                
-                <!-- Portfolio Item 4 -->
-                <div class="portfolio-item relative rounded-lg overflow-hidden shadow-md group">
-                    <img src="https://readdy.ai/api/search-image?query=real%20estate%20website%20design%2C%20property%20listings%2C%20map%20integration%2C%20search%20functionality%2C%20blue%20color%20scheme%2C%20website%20mockup%20on%20laptop%2C%20high%20quality&width=600&height=450&seq=6&orientation=landscape" alt="Real Estate Website" class="w-full h-64 object-cover">
-                    <div class="portfolio-overlay absolute inset-0 bg-primary bg-opacity-80 flex flex-col items-center justify-center opacity-0 transition-opacity duration-300">
-                        <h3 class="text-white text-xl font-semibold mb-2">Real Estate Website</h3>
-                        <p class="text-white text-center px-4 mb-4">Property listing website with advanced search and map integration</p>
-                        <a href="#" class="px-4 py-2 bg-white text-primary !rounded-button hover:bg-gray-100 transition-colors cursor-pointer">View Details</a>
-                    </div>
-                </div>
-                
-                <!-- Portfolio Item 5 -->
-                <div class="portfolio-item relative rounded-lg overflow-hidden shadow-md group">
-                    <img src="https://readdy.ai/api/search-image?query=educational%20platform%20website%20design%2C%20online%20courses%2C%20learning%20management%20system%2C%20blue%20and%20white%20color%20scheme%2C%20website%20mockup%20on%20devices%2C%20high%20quality&width=600&height=450&seq=7&orientation=landscape" alt="Educational Platform" class="w-full h-64 object-cover">
-                    <div class="portfolio-overlay absolute inset-0 bg-primary bg-opacity-80 flex flex-col items-center justify-center opacity-0 transition-opacity duration-300">
-                        <h3 class="text-white text-xl font-semibold mb-2">Educational Platform</h3>
-                        <p class="text-white text-center px-4 mb-4">Online learning platform with course management and student dashboard</p>
-                        <a href="#" class="px-4 py-2 bg-white text-primary !rounded-button hover:bg-gray-100 transition-colors cursor-pointer">View Details</a>
-                    </div>
-                </div>
-                
-                <!-- Portfolio Item 6 -->
-                <div class="portfolio-item relative rounded-lg overflow-hidden shadow-md group">
-                    <img src="https://readdy.ai/api/search-image?query=travel%20agency%20website%20design%2C%20destination%20showcase%2C%20booking%20system%2C%20blue%20color%20accents%2C%20modern%20layout%2C%20website%20mockup%20on%20multiple%20devices%2C%20high%20quality&width=600&height=450&seq=8&orientation=landscape" alt="Travel Agency Website" class="w-full h-64 object-cover">
-                    <div class="portfolio-overlay absolute inset-0 bg-primary bg-opacity-80 flex flex-col items-center justify-center opacity-0 transition-opacity duration-300">
-                        <h3 class="text-white text-xl font-semibold mb-2">Travel Agency Website</h3>
-                        <p class="text-white text-center px-4 mb-4">Travel booking website with destination guides and tour packages</p>
-                        <a href="#" class="px-4 py-2 bg-white text-primary !rounded-button hover:bg-gray-100 transition-colors cursor-pointer">View Details</a>
-                    </div>
-                </div>
-            </div>
+    <section id="portfolio" class="portfolio-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Portfolio Kami</h2>
+          <p>
+            Lihat beberapa proyek terbaik yang telah kami kerjakan untuk
+            klien-klien kami.
+          </p>
         </div>
+
+        <div class="portfolio-grid">
+          <!-- Portfolio Item -->
+          <div class="portfolio-item">
+            <img
+              src="https://readdy.ai/api/search-image?query=modern%20e-commerce%20website%20design%2C%20clean%20UI%2C%20product%20showcase%2C%20blue%20color%20scheme%2C%20professional%20website%20mockup%20on%20laptop%20screen%2C%20high%20quality&width=600&height=450&seq=3&orientation=landscape"
+              alt="E-commerce Website"
+            />
+            <div class="portfolio-overlay">
+              <h3>E-commerce Website</h3>
+              <p>
+                Online store for a fashion brand with complete payment
+                integration
+              </p>
+              <a href="#">View Details</a>
+            </div>
+          </div>
+
+          <!-- Portfolio Item -->
+          <div class="portfolio-item">
+            <img
+              src="https://readdy.ai/api/search-image?query=corporate%20business%20website%20design%2C%20professional%20layout%2C%20company%20profile%20page%2C%20blue%20and%20white%20color%20scheme%2C%20clean%20design%2C%20website%20mockup%20on%20desktop%20screen%2C%20high%20quality&width=600&height=450&seq=4&orientation=landscape"
+              alt="Corporate Website"
+            />
+            <div class="portfolio-overlay">
+              <h3>Corporate Website</h3>
+              <p>
+                Professional website for a consulting firm with booking system
+              </p>
+              <a href="#">View Details</a>
+            </div>
+          </div>
+
+          <!-- Portfolio Item -->
+          <div class="portfolio-item">
+            <img
+              src="https://readdy.ai/api/search-image?query=restaurant%20website%20design%2C%20food%20menu%20showcase%2C%20elegant%20layout%2C%20reservation%20system%2C%20blue%20accents%2C%20website%20mockup%20on%20tablet%2C%20high%20quality&width=600&height=450&seq=5&orientation=landscape"
+              alt="Restaurant Website"
+            />
+            <div class="portfolio-overlay">
+              <h3>Restaurant Website</h3>
+              <p>
+                Elegant website for a fine dining restaurant with online
+                reservation
+              </p>
+              <a href="#">View Details</a>
+            </div>
+          </div>
+
+          <!-- Portfolio Item -->
+          <div class="portfolio-item">
+            <img
+              src="https://readdy.ai/api/search-image?query=real%20estate%20website%20design%2C%20property%20listings%2C%20map%20integration%2C%20search%20functionality%2C%20blue%20color%20scheme%2C%20website%20mockup%20on%20laptop%2C%20high%20quality&width=600&height=450&seq=6&orientation=landscape"
+              alt="Real Estate Website"
+            />
+            <div class="portfolio-overlay">
+              <h3>Real Estate Website</h3>
+              <p>
+                Property listing website with advanced search and map
+                integration
+              </p>
+              <a href="#">View Details</a>
+            </div>
+          </div>
+
+          <!-- Portfolio Item -->
+          <div class="portfolio-item">
+            <img
+              src="https://readdy.ai/api/search-image?query=educational%20platform%20website%20design%2C%20online%20courses%2C%20learning%20management%20system%2C%20blue%20and%20white%20color%20scheme%2C%20website%20mockup%20on%20devices%2C%20high%20quality&width=600&height=450&seq=7&orientation=landscape"
+              alt="Educational Platform"
+            />
+            <div class="portfolio-overlay">
+              <h3>Educational Platform</h3>
+              <p>
+                Online learning platform with course management and student
+                dashboard
+              </p>
+              <a href="#">View Details</a>
+            </div>
+          </div>
+
+          <!-- Portfolio Item -->
+          <div class="portfolio-item">
+            <img
+              src="https://readdy.ai/api/search-image?query=travel%20agency%20website%20design%2C%20destination%20showcase%2C%20booking%20system%2C%20blue%20color%20accents%2C%20modern%20layout%2C%20website%20mockup%20on%20multiple%20devices%2C%20high%20quality&width=600&height=450&seq=8&orientation=landscape"
+              alt="Travel Agency Website"
+            />
+            <div class="portfolio-overlay">
+              <h3>Travel Agency Website</h3>
+              <p>
+                Travel booking website with destination guides and tour packages
+              </p>
+              <a href="#">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Testimonial Section -->
-    <section id="testimonials" class="py-16 px-4">
-        <div class="max-w-7xl mx-auto section-fade">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Apa Kata Klien Kami</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    Dengarkan pengalaman langsung dari klien-klien yang telah bekerja sama dengan kami.
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-                            <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20Indonesian%20businessman%2C%2040s%2C%20formal%20attire%2C%20neutral%20background%2C%20high%20quality%20portrait&width=100&height=100&seq=9&orientation=squarish" alt="Budi Santoso" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-semibold text-gray-800">Budi Santoso</h4>
-                            <p class="text-sm text-gray-600">CEO, Santoso Furniture</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-700 italic">
-                        "Website baru kami telah meningkatkan penjualan online sebesar 45% dalam 3 bulan pertama. Tim sangat profesional dan responsif terhadap semua kebutuhan kami."
-                    </p>
-                    <div class="flex mt-4">
-                        <i class="ri-star-fill text-yellow-400"></i>
-                        <i class="ri-star-fill text-yellow-400"></i>
-                        <i class="ri-star-fill text-yellow-400"></i>
-                        <i class="ri-star-fill text-yellow-400"></i>
-                        <i class="ri-star-fill text-yellow-400"></i>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-                            <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20Indonesian%20businesswoman%2C%2030s%2C%20smart%20casual%20attire%2C%20neutral%20background%2C%20high%20quality%20portrait&width=100&height=100&seq=10&orientation=squarish" alt="Dewi Anggraini" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-semibold text-gray-800">Dewi Anggraini</h4>
-                            <p class="text-sm text-gray-600">Founder, Batik Nusantara</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-700 italic">
-                        "Sangat puas dengan hasil website e-commerce kami. Desainnya elegan dan fungsionalitasnya lengkap. Proses pembuatannya juga sangat transparan dan kolaboratif."
-                    </p>
-                    <div class="flex mt-4">
-                        <i class="ri-star-fill text-yellow-400"></i>
-                        <i class="ri-star-fill text-yellow-400"></i>
-                        <i class="ri-star-fill text-yellow-400"></i>
-                        <i class="ri-star-fill text-yellow-400"></i>
-                        <i class="ri-star-fill text-yellow-400"></i>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-                            <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20young%20Indonesian%20entrepreneur%2C%20male%2C%2020s%2C%20casual%20business%20attire%2C%20neutral%20background%2C%20high%20quality%20portrait&width=100&height=100&seq=11&orientation=squarish" alt="Reza Pratama" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-semibold text-gray-800">Reza Pratama</h4>
-                            <p class="text-sm text-gray-600">Co-founder, TechStart Indonesia</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-700 italic">
-                        "Sebagai startup teknologi, kami membutuhkan website yang mencerminkan inovasi kami. Tim ini berhasil menerjemahkan visi kami ke dalam desain yang luar biasa."
-                    </p>
-                    <div class="flex mt-4">
-                        <i class="ri-star-fill text-yellow-400"></i>
-                        <i class="ri-star-fill text-yellow-400"></i>
-                        <i class="ri-star-fill text-yellow-400"></i>
-                        <i class="ri-star-fill text-yellow-400"></i>
-                        <i class="ri-star-half-fill text-yellow-400"></i>
-                    </div>
-                </div>
-            </div>
+    <section id="testimonials" class="testimonial-section">
+      <div class="testimonial-container">
+        <div class="testimonial-header">
+          <h2>Apa Kata Klien Kami</h2>
+          <p>
+            Dengarkan pengalaman langsung dari klien-klien yang telah bekerja
+            sama dengan kami.
+          </p>
         </div>
+
+        <div class="testimonial-grid">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card">
+            <div class="testimonial-profile">
+              <div class="testimonial-avatar">
+                <img
+                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                  alt="Budi Santoso"
+                />
+              </div>
+              <div>
+                <h4>Budi Santoso</h4>
+                <p class="testimonial-role">CEO, Santoso Furniture</p>
+              </div>
+            </div>
+            <p class="testimonial-text">
+              "Website baru kami telah meningkatkan penjualan online sebesar 45%
+              dalam 3 bulan pertama. Tim sangat profesional dan responsif
+              terhadap semua kebutuhan kami."
+            </p>
+            <div class="testimonial-stars">★★★★★</div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card">
+            <div class="testimonial-profile">
+              <div class="testimonial-avatar">
+                <img
+                  src="https://randomuser.me/api/portraits/women/44.jpg"
+                  alt="Dewi Anggraini"
+                />
+              </div>
+              <div>
+                <h4>Dewi Anggraini</h4>
+                <p class="testimonial-role">Founder, Batik Nusantara</p>
+              </div>
+            </div>
+            <p class="testimonial-text">
+              "Sangat puas dengan hasil website e-commerce kami. Desainnya
+              elegan dan fungsionalitasnya lengkap. Proses pembuatannya juga
+              sangat transparan dan kolaboratif."
+            </p>
+            <div class="testimonial-stars">★★★★★</div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card">
+            <div class="testimonial-profile">
+              <div class="testimonial-avatar">
+                <img
+                  src="https://randomuser.me/api/portraits/men/65.jpg"
+                  alt="Reza Pratama"
+                />
+              </div>
+              <div>
+                <h4>Reza Pratama</h4>
+                <p class="testimonial-role">Co-founder, TechStart Indonesia</p>
+              </div>
+            </div>
+            <p class="testimonial-text">
+              "Sebagai startup teknologi, kami membutuhkan website yang
+              mencerminkan inovasi kami. Tim ini berhasil menerjemahkan visi
+              kami ke dalam desain yang luar biasa."
+            </p>
+            <div class="testimonial-stars">★★★★½</div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 px-4 bg-gray-50">
-        <div class="max-w-7xl mx-auto section-fade">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Hubungi Kami</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    Siap untuk memulai proyek website Anda? Hubungi kami sekarang untuk konsultasi gratis.
-                </p>
-            </div>
-            
-            <div class="flex flex-col lg:flex-row gap-10">
-                <div class="w-full lg:w-1/2">
-                    <form id="contact-form" class="bg-white p-8 rounded-lg shadow-md">
-                        <div class="mb-6">
-                            <label for="name" class="block text-gray-700 font-medium mb-2">Nama</label>
-                            <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:border-primary" required>
-                        </div>
-                        
-                        <div class="mb-6">
-                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
-                            <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:border-primary" required>
-                        </div>
-                        
-                        <div class="mb-6">
-                            <label for="phone" class="block text-gray-700 font-medium mb-2">Telepon</label>
-                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:border-primary" required>
-                        </div>
-                        
-                        <div class="mb-6">
-                            <label for="message" class="block text-gray-700 font-medium mb-2">Pesan</label>
-                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:border-primary" required></textarea>
-                        </div>
-                        
-                        <button type="submit" id="submit-button" class="w-full py-3 bg-primary text-white font-medium !rounded-button hover:bg-secondary transition-colors cursor-pointer btn-primary">
-                            Kirim Pesan
-                        </button>
-                    </form>
-                </div>
-                
-                <div class="w-full lg:w-1/2">
-                    <div class="bg-white p-8 rounded-lg shadow-md h-full">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Informasi Kontak</h3>
-                        
-                        <div class="flex items-start mb-6">
-                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                                <i class="ri-map-pin-line text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-medium text-gray-800 mb-1">Alamat</h4>
-                                <p class="text-gray-600">
-                                    Jl. Sudirman No. 123<br>
-                                    Jakarta Pusat, 10220<br>
-                                    Indonesia
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start mb-6">
-                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                                <i class="ri-phone-line text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-medium text-gray-800 mb-1">Telepon</h4>
-                                <p class="text-gray-600">
-                                    +62 21 5678 9012<br>
-                                    +62 812 3456 7890
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start mb-6">
-                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                                <i class="ri-mail-line text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-medium text-gray-800 mb-1">Email</h4>
-                                <p class="text-gray-600">
-                                    info@webstudio.id<br>
-                                    support@webstudio.id
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                                <i class="ri-time-line text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-medium text-gray-800 mb-1">Jam Kerja</h4>
-                                <p class="text-gray-600">
-                                    Senin - Jumat: 09:00 - 17:00<br>
-                                    Sabtu: 09:00 - 13:00<br>
-                                    Minggu: Tutup
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section id="contact" class="contact-section">
+      <div class="contact-container">
+        <div class="contact-header">
+          <h2>Hubungi Kami</h2>
+          <p>
+            Siap untuk memulai proyek website Anda? Hubungi kami sekarang untuk
+            konsultasi gratis.
+          </p>
         </div>
+
+        <div class="contact-flex">
+          <!-- Contact Info -->
+          <div class="contact-info">
+            <h3>Informasi Kontak</h3>
+
+            <div class="info-item">
+              <div class="info-icon"><i class="ri-map-pin-2-fill"></i></div>
+              <div>
+                <h4>Alamat</h4>
+                <p>
+                  Jl. Sudirman No. 123<br />
+                  Jakarta Pusat, 10220<br />
+                  Indonesia
+                </p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon"><i class="ri-phone-fill"></i></div>
+              <div>
+                <h4>Telepon</h4>
+                <p>+62 21 5678 9012<br />+62 812 3456 7890</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon"><i class="ri-mail-fill"></i></div>
+              <div>
+                <h4>Email</h4>
+                <p>info@webstudio.id<br />support@webstudio.id</p>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon"><i class="ri-time-fill"></i></div>
+              <div>
+                <h4>Jam Kerja</h4>
+                <p>
+                  Senin - Jumat: 09:00 - 17:00<br />
+                  Sabtu: 09:00 - 13:00<br />
+                  Minggu: Tutup
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Form -->
+          <div class="contact-form-wrapper">
+            <form id="contact-form" class="contact-form">
+              <div class="form-group">
+                <label for="name">Nama</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Telepon</label>
+                <input type="tel" id="phone" name="phone" required />
+              </div>
+
+              <div class="form-group">
+                <label for="message">Pesan</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" id="submit-button" class="contact-button">
+                Kirim Pesan
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12 px-4">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div>
-                    <a href="#" class="text-2xl font-['Pacifico'] text-white mb-4 inline-block">logo</a>
-                    <p class="text-gray-300 mb-6">
-                        Kami membantu bisnis Anda tumbuh dengan solusi website profesional yang disesuaikan dengan kebutuhan Anda.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
-                            <i class="ri-facebook-fill text-white"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
-                            <i class="ri-instagram-fill text-white"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
-                            <i class="ri-twitter-x-fill text-white"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
-                            <i class="ri-linkedin-fill text-white"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-semibold mb-6">Links</h3>
-                    <ul class="space-y-3">
-                        <li><a href="#home" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="#about" class="text-gray-300 hover:text-white transition-colors">About</a></li>
-                        <li><a href="#services" class="text-gray-300 hover:text-white transition-colors">Services</a></li>
-                        <li><a href="#portfolio" class="text-gray-300 hover:text-white transition-colors">Portfolio</a></li>
-                        <li><a href="#testimonials" class="text-gray-300 hover:text-white transition-colors">Testimonials</a></li>
-                        <li><a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-semibold mb-6">Newsletter</h3>
-                    <p class="text-gray-300 mb-4">
-                        Berlangganan newsletter kami untuk mendapatkan tips dan trik terbaru seputar website.
-                    </p>
-                    <form id="newsletter-form" class="flex">
-                        <input type="email" placeholder="Email Anda" class="px-4 py-2 w-full rounded-l-md border-none focus:outline-none text-gray-800">
-                        <button type="submit" class="bg-primary hover:bg-secondary px-4 py-2 rounded-r-md transition-colors">
-                            <i class="ri-send-plane-fill"></i>
-                        </button>
-                    </form>
-                </div>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-grid">
+          <!-- Brand -->
+          <div>
+            <a href="#" class="footer-logo">logo</a>
+            <p class="footer-description">
+              Kami membantu bisnis Anda tumbuh dengan solusi website profesional
+              yang disesuaikan dengan kebutuhan Anda.
+            </p>
+            <!-- Social Icons -->
+            <div class="footer-socials">
+              <a href="#" class="social-icon"
+                ><i class="ri-facebook-fill"></i
+              ></a>
+              <a href="#" class="social-icon"
+                ><i class="ri-instagram-fill"></i
+              ></a>
+              <a href="#" class="social-icon"
+                ><i class="ri-twitter-x-fill"></i
+              ></a>
+              <a href="#" class="social-icon"
+                ><i class="ri-linkedin-fill"></i
+              ></a>
             </div>
-            
-            <div class="border-t border-gray-700 mt-10 pt-6 text-center">
-                <p class="text-gray-400">
-                    &copy; 2025 Web Studio Indonesia. All rights reserved. | Designed with <i class="ri-heart-fill text-red-500"></i> in Jakarta
-                </p>
-            </div>
+          </div>
+
+          <!-- Links -->
+          <div>
+            <h3 class="footer-heading">Links</h3>
+            <ul class="footer-links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#testimonials">Testimonials</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div>
+            <h3 class="footer-heading">Newsletter</h3>
+            <p class="footer-description">
+              Berlangganan newsletter kami untuk mendapatkan tips dan trik
+              terbaru seputar website.
+            </p>
+            <form id="newsletter-form" class="newsletter-form">
+              <input type="email" placeholder="Email Anda" required />
+              <button type="submit">📨</button>
+            </form>
+          </div>
         </div>
+
+        <!-- Copyright -->
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 Webib Indonesia. All rights reserved. | Designed with ❤️
+          </p>
+        </div>
+      </div>
     </footer>
 
     <!-- Mobile CTA Button -->
-    <div id="mobile-cta" class="fixed bottom-4 right-4 md:hidden z-40">
-        <a href="#contact" class="w-14 h-14 bg-primary rounded-full flex items-center justify-center shadow-lg hover:bg-secondary transition-colors">
-            <i class="ri-message-3-fill text-white ri-xl"></i>
-        </a>
+    <div id="mobile-cta" class="mobile-cta">
+      <a href="#contact" class="cta-button"> 💬 </a>
     </div>
 
     <!-- Success Modal -->
-    <div id="success-modal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
-        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div class="bg-white rounded-lg p-8 max-w-md w-full relative z-10">
-            <button id="close-modal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
-                <i class="ri-close-line ri-lg"></i>
-            </button>
-            <div class="text-center">
-                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="ri-check-line ri-2x text-green-500"></i>
-                </div>
-                <h3 class="text-xl font-semibold text-gray-800 mb-2">Pesan Terkirim!</h3>
-                <p class="text-gray-600 mb-6">
-                    Terima kasih telah menghubungi kami. Tim kami akan segera menghubungi Anda dalam 24 jam.
-                </p>
-                <button id="confirm-modal" class="px-6 py-2 bg-primary text-white !rounded-button hover:bg-secondary transition-colors cursor-pointer">
-                    OK
-                </button>
-            </div>
+    <div id="success-modal" class="modal hidden">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <button id="close-modal" class="modal-close">✖️</button>
+        <div class="modal-body">
+          <div class="modal-icon">✅</div>
+          <h3 class="modal-title">Pesan Terkirim!</h3>
+          <p class="modal-message">
+            Terima kasih telah menghubungi kami. Tim kami akan segera
+            menghubungi Anda dalam 24 jam.
+          </p>
+          <button id="confirm-modal" class="modal-button">OK</button>
         </div>
+      </div>
     </div>
 
     <!-- Scripts -->
     <script id="navigation-script">
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            mobileMenuButton.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
-            });
-            
-            // Close mobile menu when clicking on a link
-            const mobileLinks = mobileMenu.querySelectorAll('a');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileMenu.classList.add('hidden');
-                });
-            });
-            
-            // Smooth scrolling for all anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80, // Adjust for fixed header
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        mobileMenuButton.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
         });
+
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll("a");
+        mobileLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            mobileMenu.classList.add("hidden");
+          });
+        });
+
+        // Smooth scrolling for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80, // Adjust for fixed header
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
     </script>
 
     <script id="animation-script">
-        document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('.section-fade');
-            
-            const fadeInObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        fadeInObserver.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1
+      document.addEventListener("DOMContentLoaded", function () {
+        const sections = document.querySelectorAll(".section-fade");
+
+        const fadeInObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                fadeInObserver.unobserve(entry.target);
+              }
             });
-            
-            sections.forEach(section => {
-                fadeInObserver.observe(section);
-            });
+          },
+          {
+            threshold: 0.1,
+          }
+        );
+
+        sections.forEach((section) => {
+          fadeInObserver.observe(section);
         });
+      });
     </script>
 
     <script id="form-script">
-        document.addEventListener('DOMContentLoaded', function() {
-            const contactForm = document.getElementById('contact-form');
-            const successModal = document.getElementById('success-modal');
-            const closeModal = document.getElementById('close-modal');
-            const confirmModal = document.getElementById('confirm-modal');
-            
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Simulate form submission
-                const submitButton = document.getElementById('submit-button');
-                submitButton.innerHTML = '<i class="ri-loader-4-line ri-spin"></i> Mengirim...';
-                submitButton.disabled = true;
-                
-                setTimeout(() => {
-                    submitButton.innerHTML = 'Kirim Pesan';
-                    submitButton.disabled = false;
-                    
-                    // Show success modal
-                    successModal.classList.remove('hidden');
-                    
-                    // Reset form
-                    contactForm.reset();
-                }, 1500);
-            });
-            
-            closeModal.addEventListener('click', function() {
-                successModal.classList.add('hidden');
-            });
-            
-            confirmModal.addEventListener('click', function() {
-                successModal.classList.add('hidden');
-            });
-            
-            // Newsletter form
-            const newsletterForm = document.getElementById('newsletter-form');
-            newsletterForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const emailInput = this.querySelector('input[type="email"]');
-                const email = emailInput.value;
-                
-                if (email && email.includes('@')) {
-                    // Simulate subscription
-                    this.innerHTML = '<div class="w-full px-4 py-2 bg-green-100 text-green-700 rounded-md">Terima kasih telah berlangganan!</div>';
-                    
-                    setTimeout(() => {
-                        this.innerHTML = `
+      document.addEventListener("DOMContentLoaded", function () {
+        const contactForm = document.getElementById("contact-form");
+        const successModal = document.getElementById("success-modal");
+        const closeModal = document.getElementById("close-modal");
+        const confirmModal = document.getElementById("confirm-modal");
+
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Simulate form submission
+          const submitButton = document.getElementById("submit-button");
+          submitButton.innerHTML =
+            '<i class="ri-loader-4-line ri-spin"></i> Mengirim...';
+          submitButton.disabled = true;
+
+          setTimeout(() => {
+            submitButton.innerHTML = "Kirim Pesan";
+            submitButton.disabled = false;
+
+            // Show success modal
+            successModal.classList.remove("hidden");
+
+            // Reset form
+            contactForm.reset();
+          }, 1500);
+        });
+
+        closeModal.addEventListener("click", function () {
+          successModal.classList.add("hidden");
+        });
+
+        confirmModal.addEventListener("click", function () {
+          successModal.classList.add("hidden");
+        });
+
+        // Newsletter form
+        const newsletterForm = document.getElementById("newsletter-form");
+        newsletterForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const emailInput = this.querySelector('input[type="email"]');
+          const email = emailInput.value;
+
+          if (email && email.includes("@")) {
+            // Simulate subscription
+            this.innerHTML =
+              '<div class="w-full px-4 py-2 bg-green-100 text-green-700 rounded-md">Terima kasih telah berlangganan!</div>';
+
+            setTimeout(() => {
+              this.innerHTML = `
                             <input type="email" placeholder="Email Anda" class="px-4 py-2 w-full rounded-l-md border-none focus:outline-none text-gray-800">
                             <button type="submit" class="bg-primary hover:bg-secondary px-4 py-2 rounded-r-md transition-colors">
                                 <i class="ri-send-plane-fill"></i>
                             </button>
                         `;
-                    }, 3000);
-                } else {
-                    emailInput.classList.add('border', 'border-red-500');
-                    setTimeout(() => {
-                        emailInput.classList.remove('border', 'border-red-500');
-                    }, 3000);
-                }
-            });
+            }, 3000);
+          } else {
+            emailInput.classList.add("border", "border-red-500");
+            setTimeout(() => {
+              emailInput.classList.remove("border", "border-red-500");
+            }, 3000);
+          }
         });
+      });
     </script>
-</body>
+  </body>
 </html>
